@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProdutoController;
 
 Route::get('/', function () {
     return view('index');
@@ -22,4 +23,9 @@ Route::middleware(['auth.custom'])->group(function () {
     Route::get('/menu_admin', function () {
         return view('menu_admin');
     })->name('menu_admin');
+});
+
+Route::middleware(['auth.custom'])->group(function () {
+    Route::get('/menu', [ProdutoController::class, 'index'])->name('menu');
+    Route::get('/menu_admin', function () { return view('menu_admin'); })->name('menu_admin');
 });
