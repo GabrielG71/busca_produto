@@ -29,3 +29,6 @@ Route::middleware(['auth.custom'])->group(function () {
     Route::get('/menu', [ProdutoController::class, 'index'])->name('menu');
     Route::get('/menu_admin', function () { return view('menu_admin'); })->name('menu_admin');
 });
+
+Route::post('/produtos/baixa/{id}', [ProdutoController::class, 'darBaixa'])->name('produtos.baixa');
+Route::get('/menu', [ProdutoController::class, 'index'])->name('menu');
